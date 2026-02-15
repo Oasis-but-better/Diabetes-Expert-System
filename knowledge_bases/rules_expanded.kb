@@ -1,0 +1,201 @@
+% ================================================================================
+% HYBRID DIABETES DIAGNOSIS EXPERT SYSTEM - EXPANDED KNOWLEDGE BASE
+% ================================================================================
+% Based on ADA 2025 Standards of Care
+% Domain: Medical Endocrinology (Diabetes Mellitus)
+%
+% This expanded KB implements a comprehensive rule-based system for diabetes
+% diagnosis, classification, and risk assessment following American Diabetes
+% Association guidelines with enhanced coverage.
+%
+% IMPORTANT: This parser does NOT support inline arithmetic (e.g., a >= 35).
+% All numeric comparisons must be pre-computed as Boolean facts in Python.
+% ================================================================================
+
+% ===== SECTION 1: ABSTRACTION RULES (1-4) =====
+
+% --- RULE 1: Abstraction - FPG indicates Provisional Hyperglycemia ---
+FpgHigh(p) => ProvisionalHyperglycemia(p)
+
+% --- RULE 2: Abstraction - A1C indicates Provisional Hyperglycemia ---
+A1cHigh(p) => ProvisionalHyperglycemia(p)
+
+% --- RULE 3: Abstraction - Random Glucose indicates Provisional Hyperglycemia ---
+RandomGlucoseHigh(p) => ProvisionalHyperglycemia(p)
+
+% --- RULE 4: Symptom Recognition - Classic Diabetes Symptoms ---
+Symptom(p, Polydipsia) => ClassicSymptoms(p)
+Symptom(p, Polyuria) => ClassicSymptoms(p)
+Symptom(p, WeightLoss) => ClassicSymptoms(p)
+
+% ===== SECTION 2: DIAGNOSTIC RULES (5-7) =====
+
+% --- RULE 5: Immediate Diagnosis - Symptomatic with High Random Glucose ---
+% Per ADA: Random glucose ≥200 mg/dL + classic symptoms
+RandomGlucoseHigh(p) && ClassicSymptoms(p) => DiabetesConfirmed(p)
+
+% --- RULE 6: Confirmed Diagnosis - Asymptomatic with Repeat High FPG ---
+% Per ADA: Requires confirmation in asymptomatic patients
+FpgHigh(p) && FpgRepeatHigh(p) => DiabetesConfirmed(p)
+
+% --- RULE 7: Conflict Detection - Discordant Results ---
+% When test results disagree, repeat the test that exceeded threshold
+FpgHigh(p) && A1cNormal(p) => DiscordantResults(p)
+FpgHigh(p) && A1cNormal(p) => Recommend(p, RepeatFPG)
+
+% ===== SECTION 3: CLASSIFICATION RULES (8-9) =====
+
+% --- RULE 8: Classification - Type 1 Heuristic ---
+% Classic presentation: young, lean, acute onset with ketones
+DiabetesConfirmed(p) && YoungAge(p) && LowBMI(p) => SuspectedType1(p)
+
+% --- RULE 9: Classification - Type 2 Heuristic ---
+% Classic presentation: older, overweight, gradual onset
+DiabetesConfirmed(p) && OlderAge(p) && HighBMI(p) => SuspectedType2(p)
+
+% ===== SECTION 4: EMERGENCY DETECTION RULES (10-12) =====
+
+% --- RULE 10: Emergency Detection - Diabetic Ketoacidosis (DKA) ---
+% Critical condition requiring immediate intervention
+VeryHighGlucose(p) && KetoneStatus(p, Positive) => MedicalEmergencyDKA(p)
+MedicalEmergencyDKA(p) => Recommend(p, EmergencyRoom)
+MedicalEmergencyDKA(p) => Recommend(p, InsulinTherapy)
+
+% --- RULE 11: Treatment Recommendation - Type 1 Workup ---
+SuspectedType1(p) => Recommend(p, AutoantibodyPanel)
+SuspectedType1(p) => Recommend(p, InsulinTherapy)
+SuspectedType1(p) => Recommend(p, CPeptideMeasurement)
+
+% --- RULE 12: Treatment Recommendation - Type 2 Management ---
+SuspectedType2(p) => Recommend(p, LifestyleChanges)
+SuspectedType2(p) => Recommend(p, Metformin)
+SuspectedType2(p) => Recommend(p, SMBG)
+
+% ===== SECTION 5: PREDIABETES RULES (13-14) - NEW =====
+
+% --- RULE 13: Prediabetes Detection - Impaired Fasting Glucose (IFG) ---
+% Per ADA: FPG 100-125 mg/dL indicates prediabetes
+FpgImpaired(p) => PrediabetesIFG(p)
+PrediabetesIFG(p) => Recommend(p, LifestyleIntervention)
+PrediabetesIFG(p) => Recommend(p, AnnualScreening)
+
+% --- RULE 14: Prediabetes Detection - Impaired Glucose Tolerance (IGT) ---
+% Per ADA: A1C 5.7-6.4% indicates prediabetes/increased diabetes risk
+A1cImpaired(p) => PrediabetesIGT(p)
+PrediabetesIGT(p) => Recommend(p, LifestyleIntervention)
+PrediabetesIGT(p) => Recommend(p, AnnualScreening)
+
+% ===== SECTION 6: SCREENING GUIDELINES (15) - NEW =====
+
+% --- RULE 15: Screening Recommendations - At-Risk Populations ---
+% Per ADA 2025: Universal screening at age 35+ OR overweight with risk factors
+HighRiskScreening(p) => Recommend(p, DiabetesScreening)
+
+% ===== SECTION 7: LADA DETECTION (16) - NEW =====
+
+% --- RULE 16: LADA Detection - Latent Autoimmune Diabetes in Adults ---
+% Characteristics: Adult onset (30-50), lean, gradual progression
+LADAIndicators(p) => Recommend(p, GADAutoantibodies)
+LADAIndicators(p) => Recommend(p, EndocrinologyReferral)
+
+% ===== SECTION 8: GESTATIONAL DIABETES HISTORY (17) - NEW =====
+
+% --- RULE 17: Gestational Diabetes History - Enhanced Monitoring ---
+% Prior GDM significantly increases Type 2 risk
+GestationalHistory(p) && PrediabetesIFG(p) => Recommend(p, IntensiveLifestyle)
+GestationalHistory(p) && PrediabetesIGT(p) => Recommend(p, IntensiveLifestyle)
+GestationalHistory(p) => Recommend(p, LifelongScreening)
+
+% ===== SECTION 9: METABOLIC SYNDROME (18) - NEW =====
+
+% --- RULE 18: Metabolic Syndrome Screening ---
+% Cluster of conditions increasing diabetes and CVD risk
+MetabolicSyndrome(p) => Recommend(p, ComprehensiveMetabolicPanel)
+MetabolicSyndrome(p) => Recommend(p, CardiovascularRiskAssessment)
+
+% ===== SECTION 10: CARDIOVASCULAR RISK (19) - NEW =====
+
+% --- RULE 19: Cardiovascular Risk Assessment ---
+% Diabetes significantly increases CVD risk, especially with age
+CVDRiskHigh(p) => Recommend(p, StatinTherapy)
+CVDRiskHigh(p) => Recommend(p, ASATherapy)
+CVDRiskHigh(p) => Recommend(p, BPControl)
+
+% ===== SECTION 11: LIFESTYLE INTERVENTION PRIORITY (20) - NEW =====
+
+% --- RULE 20: Intensive Lifestyle Intervention Priority ---
+% First-line treatment for prediabetes and early Type 2
+LifestylePriority(p) => Recommend(p, DPPProgram)
+LifestylePriority(p) => Recommend(p, NutritionCounseling)
+LifestylePriority(p) => Recommend(p, ExercisePrescription)
+
+% ===== ADDITIONAL DIAGNOSTIC RULES =====
+
+% --- Confirmed Diagnosis via A1C Repeat ---
+A1cHigh(p) && A1cRepeatHigh(p) => DiabetesConfirmed(p)
+
+% --- Hyperosmolar Hyperglycemic State (HHS) Detection ---
+MedicalEmergencyHHS(p) => Recommend(p, EmergencyRoom)
+MedicalEmergencyHHS(p) => Recommend(p, IVFluids)
+
+% --- Type 2 with Insulin Requirement ---
+SuspectedType2(p) && VeryHighA1c(p) => Recommend(p, InsulinConsideration)
+
+% --- Monogenic Diabetes Consideration ---
+MonogenicDiabetesSuspicion(p) => Recommend(p, GeneticTesting)
+
+% ===== ENHANCED RECOMMENDATIONS =====
+
+% --- Diabetic Education ---
+DiabetesConfirmed(p) => Recommend(p, DiabetesEducation)
+DiabetesConfirmed(p) => Recommend(p, DSMES)
+
+% --- Complications Screening ---
+DiabetesConfirmed(p) => Recommend(p, RetinopathyScreening)
+DiabetesConfirmed(p) => Recommend(p, NephropathyScreening)
+DiabetesConfirmed(p) => Recommend(p, NeuropathyScreening)
+
+% --- Follow-up Monitoring ---
+DiabetesConfirmed(p) => Recommend(p, QuarterlyA1C)
+PrediabetesIFG(p) => Recommend(p, SemiannualScreening)
+PrediabetesIGT(p) => Recommend(p, SemiannualScreening)
+
+% ================================================================================
+% HELPER FACTS - Diagnostic Thresholds
+% ================================================================================
+% These thresholds align with ADA 2025 Standards of Care.
+% All numeric comparisons are pre-computed in Python and added as Boolean facts.
+%
+% DIABETES DIAGNOSTIC CRITERIA:
+% - FpgHigh(p):         FPG >= 126 mg/dL
+% - A1cHigh(p):         A1C >= 6.5%
+% - RandomGlucoseHigh(p): Random glucose >= 200 mg/dL
+% - VeryHighGlucose(p): Glucose > 250 mg/dL
+%
+% PREDIABETES CRITERIA:
+% - FpgImpaired(p):     FPG 100-125 mg/dL
+% - A1cImpaired(p):     A1C 5.7-6.4%
+%
+% NORMAL RANGES:
+% - FpgNormal(p):       FPG < 100 mg/dL
+% - A1cNormal(p):       A1C < 5.7%
+%
+% CLASSIFICATION HEURISTICS:
+% - YoungAge(p):        Age < 35 years
+% - OlderAge(p):        Age >= 35 years
+% - LowBMI(p):          BMI < 25 kg/m²
+% - HighBMI(p):         BMI >= 25 kg/m²
+% - VeryHighA1c(p):     A1C >= 10.0%
+%
+% COMPLEX CRITERIA (computed in Python):
+% - HighRiskScreening(p):     Age >= 35 OR (BMI >= 25 AND has_risk_factors)
+% - LADAIndicators(p):        DiabetesConfirmed AND age 30-50 AND BMI < 25 AND gradual_onset
+% - MetabolicSyndrome(p):     HighBMI AND Hypertension AND Dyslipidemia
+% - CVDRiskHigh(p):           DiabetesConfirmed AND (age >= 40 OR Hypertension OR SmokingHistory)
+% - LifestylePriority(p):     (PrediabetesIFG OR PrediabetesIGT) AND HighBMI
+% - MedicalEmergencyHHS(p):   VeryHighGlucose AND age >= 60 AND NoKetones
+% - MonogenicDiabetesSuspicion(p): DiabetesConfirmed AND YoungAge AND StrongFamilyHistory AND NoAutoantibodies
+%
+% ================================================================================
+% END OF EXPANDED KNOWLEDGE BASE
+% ================================================================================

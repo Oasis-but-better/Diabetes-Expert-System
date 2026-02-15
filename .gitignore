@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+.venv/
+env/
+.env/
+
+# Environment Variables & Secrets (CRITICAL)
+.env
+.env.local
+.env.*
+
+# Operating System Metadata
+.DS_Store
+Thumbs.db
+
+# IDE Settings (Optional but recommended)
+.vscode/
+.idea/
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/

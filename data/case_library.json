@@ -1,0 +1,177 @@
+[
+  {
+    "id": "case_001",
+    "features": {
+      "age": 14,
+      "bmi": 19.0,
+      "fpg": null,
+      "a1c": null,
+      "random_glucose": 350,
+      "fpg_repeat": null,
+      "ketones": "positive",
+      "symptoms": ["polydipsia", "weight-loss"]
+    },
+    "solution": {
+      "diagnosis": "Type 1 Diabetes Mellitus",
+      "status": "Confirmed - DKA Emergency",
+      "recommendations": [
+        "emergency-room",
+        "insulin-therapy",
+        "autoantibody-panel",
+        "diabetes-education"
+      ]
+    },
+    "outcome": "successful",
+    "notes": "Young patient with classic Type 1 presentation and DKA. Required immediate hospitalization. Responded well to insulin."
+  },
+  {
+    "id": "case_002",
+    "features": {
+      "age": 45,
+      "bmi": 27.0,
+      "fpg": 130,
+      "a1c": 6.0,
+      "random_glucose": null,
+      "fpg_repeat": 132,
+      "ketones": "negative",
+      "symptoms": []
+    },
+    "solution": {
+      "diagnosis": "Type 2 Diabetes Mellitus",
+      "status": "Confirmed",
+      "recommendations": [
+        "lifestyle-changes",
+        "metformin",
+        "smbg",
+        "quarterly-a1c"
+      ]
+    },
+    "outcome": "successful",
+    "notes": "Asymptomatic patient with confirmed diabetes via repeat FPG. A1C in prediabetes range but discordant. Started on lifestyle modifications and metformin."
+  },
+  {
+    "id": "case_003",
+    "features": {
+      "age": 55,
+      "bmi": 32.0,
+      "fpg": 150,
+      "a1c": null,
+      "random_glucose": null,
+      "fpg_repeat": 148,
+      "ketones": "negative",
+      "symptoms": ["tired"]
+    },
+    "solution": {
+      "diagnosis": "Type 2 Diabetes Mellitus",
+      "status": "Confirmed",
+      "recommendations": [
+        "lifestyle-changes",
+        "metformin",
+        "smbg",
+        "cardiovascular-risk-assessment"
+      ]
+    },
+    "outcome": "successful",
+    "notes": "Older patient with obesity and confirmed diabetes. Started comprehensive Type 2 management program."
+  },
+  {
+    "id": "case_004",
+    "features": {
+      "age": 42,
+      "bmi": 28.5,
+      "fpg": 115,
+      "a1c": 6.1,
+      "random_glucose": null,
+      "fpg_repeat": null,
+      "ketones": "negative",
+      "symptoms": []
+    },
+    "solution": {
+      "diagnosis": "Prediabetes",
+      "status": "Confirmed",
+      "recommendations": [
+        "lifestyle-intervention",
+        "annual-screening",
+        "nutrition-counseling",
+        "exercise-prescription"
+      ]
+    },
+    "outcome": "successful",
+    "notes": "Prediabetes with both IFG and IGT. Enrolled in DPP-style program. Lost 15 lbs over 6 months."
+  },
+  {
+    "id": "case_005",
+    "features": {
+      "age": 38,
+      "bmi": 22.0,
+      "fpg": 135,
+      "a1c": 6.8,
+      "random_glucose": null,
+      "fpg_repeat": null,
+      "ketones": "negative",
+      "symptoms": []
+    },
+    "solution": {
+      "diagnosis": "LADA (Latent Autoimmune Diabetes)",
+      "status": "Suspected",
+      "recommendations": [
+        "gad-autoantibodies",
+        "c-peptide-measurement",
+        "endocrinology-referral",
+        "insulin-therapy"
+      ]
+    },
+    "outcome": "successful",
+    "notes": "Adult-onset diabetes with lean body habitus. GAD antibodies positive. Diagnosed with LADA. Transitioned to insulin after 18 months."
+  },
+  {
+    "id": "case_006",
+    "features": {
+      "age": 29,
+      "bmi": 34.0,
+      "fpg": 145,
+      "a1c": 7.2,
+      "random_glucose": null,
+      "fpg_repeat": null,
+      "ketones": "negative",
+      "symptoms": []
+    },
+    "solution": {
+      "diagnosis": "Type 2 Diabetes Mellitus",
+      "status": "Confirmed",
+      "recommendations": [
+        "intensive-lifestyle",
+        "metformin",
+        "bariatric-surgery-consideration",
+        "psychology-referral"
+      ]
+    },
+    "outcome": "successful",
+    "notes": "Young adult with obesity and Type 2 diabetes. Referred for bariatric surgery evaluation. Excellent response to comprehensive care."
+  },
+  {
+    "id": "case_007",
+    "features": {
+      "age": 68,
+      "bmi": 26.0,
+      "fpg": 92,
+      "a1c": 5.5,
+      "random_glucose": 420,
+      "fpg_repeat": null,
+      "ketones": "negative",
+      "symptoms": ["confusion", "dehydration"]
+    },
+    "solution": {
+      "diagnosis": "Hyperosmolar Hyperglycemic State (HHS)",
+      "status": "Confirmed - Emergency",
+      "recommendations": [
+        "emergency-room",
+        "iv-fluids",
+        "insulin-therapy",
+        "electrolyte-monitoring"
+      ]
+    },
+    "outcome": "successful",
+    "notes": "Elderly patient presenting with HHS. Very high random glucose without ketones. Required ICU admission for fluid resuscitation."
+  }
+]

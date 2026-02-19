@@ -2,27 +2,23 @@
 
 ## Advanced Rule-Based + Case-Based Reasoning System
 
-**Course:** B552 - Knowledge-Based AI  
-**Project:** Hybrid Expert System Implementation  
-**Domain:** Medical Endocrinology (Diabetes Mellitus)
-
 ---
 
-## 🎯 Overview
+## Overview
 
 This system combines **forward-chaining rule-based reasoning** with **case-based reasoning (CBR)** to create a comprehensive diabetes diagnosis expert system that implements ADA 2025 Standards of Care.
 
 ### Key Features
 
-✨ **Dual Reasoning Engines**: FOL rules + CBR experience learning  
-📚 **Expanded Rule Set**: 20 ADA-compliant rules (12 original + 8 new)  
-🤖 **LLM Explanations**: Natural language via Groq/Llama 3.3 70B  
-📊 **Confidence Scoring**: Hybrid rule + similarity confidence  
-🔄 **Auto-Learning**: Novel case retention for continuous improvement  
+**Dual Reasoning Engines**: FOL rules + CBR experience learning  
+**Expanded Rule Set**: 20 ADA-compliant rules (12 original + 8 new)  
+**LLM Explanations**: Natural language via Groq/Llama 3.3 70B  
+**Confidence Scoring**: Hybrid rule + similarity confidence  
+**Auto-Learning**: Novel case retention for continuous improvement  
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # 1. Setup
@@ -39,7 +35,7 @@ See [docs/USER_GUIDE.md](docs/USER_GUIDE.md) for complete documentation.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 hybrid_diabetes_system/
@@ -70,7 +66,7 @@ hybrid_diabetes_system/
 
 ---
 
-## 🔬 What's New in This Hybrid System
+## What's New in This Hybrid System
 
 ### 1. Enhanced Rule Set (20 Rules)
 
@@ -122,7 +118,7 @@ Patient Data
 
 ---
 
-## 📊 Usage Examples
+## Usage Examples
 
 ### Example 1: Emergency Detection
 
@@ -150,7 +146,7 @@ python run_hybrid.py --patient sam
 
 ---
 
-## 🧪 Test Scenarios
+## Test Scenarios
 
 The system includes 5 pre-configured test cases:
 
@@ -164,7 +160,7 @@ The system includes 5 pre-configured test cases:
 
 ---
 
-## 📖 Documentation
+## Documentation
 
 - **[USER_GUIDE.md](docs/USER_GUIDE.md)**: Complete user documentation
 - **[rules_expanded.kb](knowledge_bases/rules_expanded.kb)**: Full rule set with comments
@@ -172,7 +168,7 @@ The system includes 5 pre-configured test cases:
 
 ---
 
-## 🔧 Technical Details
+## Technical Details
 
 ### Dependencies
 
@@ -192,7 +188,7 @@ The system includes 5 pre-configured test cases:
 
 ---
 
-## 🎓 Educational Value
+## Educational Value
 
 This project demonstrates:
 
@@ -205,7 +201,7 @@ This project demonstrates:
 
 ---
 
-## ⚠️ Important Disclaimers
+## Important Disclaimers
 
 **Educational Use Only**: This system is for learning purposes and is **NOT** for clinical use.
 
@@ -215,7 +211,7 @@ This project demonstrates:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Suggestions for improvement:
 
@@ -227,30 +223,26 @@ Suggestions for improvement:
 
 ---
 
-## 📜 License
+## License
 
 MIT License - Educational and research use
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **ADA 2025 Standards**: Clinical guidelines
-- **B552 Course**: Knowledge-Based AI curriculum
 - **Original Systems**: Rule-based and CBR foundations
 - **Groq**: Free LLM API access
 
 ---
 
-## 📞 Support
+## Support
 
 - Documentation: See `docs/USER_GUIDE.md`
 - Issues: Review troubleshooting section
-- Questions: Consult course materials
 
 ---
 
 **Version**: 1.0.0  
 **Date**: February 2026  
-**Author**: B552 Knowledge-Based AI Project  
-**Institution**: Indiana University, Bloomington

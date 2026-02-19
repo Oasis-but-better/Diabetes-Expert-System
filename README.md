@@ -245,4 +245,3 @@ MIT License - Educational and research use
 ---
 
 **Author**: Hiten Kataria
-**Date**: 14 February 2026  

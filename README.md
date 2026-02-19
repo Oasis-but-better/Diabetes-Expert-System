@@ -11,7 +11,7 @@ This system combines **forward-chaining rule-based reasoning** with **case-based
 ### Key Features
 
 **Dual Reasoning Engines**: FOL rules + CBR experience learning  
-**Expanded Rule Set**: 20 ADA-compliant rules (12 original + 8 new)  
+**Rule Set**: 20 ADA-compliant rules 
 **LLM Explanations**: Natural language via Groq/Llama 3.3 70B  
 **Confidence Scoring**: Hybrid rule + similarity confidence  
 **Auto-Learning**: Novel case retention for continuous improvement  
@@ -47,10 +47,10 @@ hybrid_diabetes_system/
 │   ├── similarity.py      # Similarity metrics
 │   ├── retrieval.py       # K-NN retrieval
 │   ├── adaptation.py      # Solution adaptation
-│   └── hybrid_reasoner.py # Integration layer (NEW)
+│   └── hybrid_reasoner.py # Integration layer
 │
 ├── knowledge_bases/
-│   └── rules_expanded.kb  # 20 ADA rules (NEW)
+│   └── rules.kb  # 20 ADA rules 
 │
 ├── data/
 │   └── case_library.json  # CBR case database

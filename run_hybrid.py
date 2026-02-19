@@ -278,7 +278,7 @@ Examples:
     
     # Set up paths
     base_dir = Path(__file__).parent
-    rules_path = base_dir / "knowledge_bases" / "rules_expanded.kb"
+    rules_path = base_dir / "knowledge_bases" / "rules.kb"
     cases_path = base_dir / "data" / "case_library.json"
     output_dir = base_dir / "output"
     output_dir.mkdir(exist_ok=True)

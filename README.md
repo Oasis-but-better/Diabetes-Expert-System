@@ -163,7 +163,7 @@ The system includes 5 pre-configured test cases:
 ## Documentation
 
 - **[USER_GUIDE.md](docs/USER_GUIDE.md)**: Complete user documentation
-- **[rules_expanded.kb](knowledge_bases/rules_expanded.kb)**: Full rule set with comments
+- **[rules.kb](knowledge_bases/rules.kb)**: Full rule set with comments
 - **[case_library.json](data/case_library.json)**: Sample cases
 
 ---
@@ -244,5 +244,6 @@ MIT License - Educational and research use
 
 ---
 
+**Author**: Hiten Kataria
 **Version**: 1.0.0  
 **Date**: February 2026  

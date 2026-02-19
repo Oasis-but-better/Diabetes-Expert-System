@@ -245,5 +245,4 @@ MIT License - Educational and research use
 ---
 
 **Author**: Hiten Kataria 
-**Version**: 1.0.0  
-**Date**: February 2026  
+**Date**: 14 February 2026  
